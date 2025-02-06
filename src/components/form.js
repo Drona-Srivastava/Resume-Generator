@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import "../styles/form.css";
 
 export default function ResumeForm() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: "",
         college: "",
@@ -121,56 +124,56 @@ export default function ResumeForm() {
         <h3 className="form-subtitle">Experience (Max 2) </h3>
         <input
           type="text"
-          name="organization"
+          name="organization1"
           placeholder="Organization"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="startDate"
+          name="startDate1"
           placeholder="Start Date"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="endDate"
+          name="endDate1"
           placeholder="End Date or Ongoing"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="role"
+          name="role1"
           placeholder="Role in the job"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="organization"
+          name="organization2"
           placeholder="Organization"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="startDate"
+          name="startDate2"
           placeholder="Start Date"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="endDate"
+          name="endDate2"
           placeholder="End Date or Ongoing"
           onChange={handleChange}
           className="form-input"
         />
         <input
           type="text"
-          name="role"
+          name="role2"
           placeholder="Role in the job"
           onChange={handleChange}
           className="form-input"
@@ -210,7 +213,38 @@ export default function ResumeForm() {
             </li>
           ))}
         </ul>
-        <button className="form-button">Generate Resume</button>
+        {/* Experience */}
+        <h3 className="form-subtitle">Projects (Max 2) </h3>
+        <input
+          type="text"
+          name="project1"
+          placeholder="Project Name"
+          onChange={handleChange}
+          className="form-input"
+        />
+        <textarea
+          type="text"
+          name="description1"
+          placeholder="Project Description"
+          onChange={handleChange}
+          className="form-input"
+        />
+        <input
+          type="text"
+          name="project2"
+          placeholder="Project Name"
+          onChange={handleChange}
+          className="form-input"
+        />
+        <textarea
+          type="text"
+          name="description2"
+          placeholder="Project Description"
+          onChange={handleChange}
+          className="form-input"
+        />
+        <button className="form-button" onClick={()=> navigate("/template")}>
+          Generate Resume</button>
       </div>
     </>
   );

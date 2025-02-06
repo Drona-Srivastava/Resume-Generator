@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 200px; */
+}
+
+.items {
+  width: 50%; 
+  height: 100px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+  border: 1px solid #333;
+  font-size: 20px;
+}
