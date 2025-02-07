@@ -5,7 +5,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./pages/home.js";
 import ResumeForm from "./components/form.js";
-import Template from "./components/template.jsx";
+import Template from "./components/template.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
