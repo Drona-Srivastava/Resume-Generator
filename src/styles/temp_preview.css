@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0px;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.temp_img {
+  width: 400px;
+  height: auto;
+  border: 2px solid #333;
+  margin-left: 300px;
+}
+
+.container2 {
+  width: 50%;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 20px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temp_button {
+  width: 40%;
+  margin-top: 30px;
+  border-radius: 10px;
+  padding: 10px;
+  background: linear-gradient(135deg, #88d8b0, #a1c4fd);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.temp_button:hover{
+  transform: scale(1.1);
+}
