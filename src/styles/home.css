@@ -42,3 +42,10 @@
   background-color: #e1f5fe; 
   color: #004d40; 
 }
+
+.home_logo{
+  height: 60px;
+  width: auto;
+  position: relative;
+  top: 18px;
+}

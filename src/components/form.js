@@ -1,42 +1,86 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import "../styles/form.css";
-
 export default function ResumeForm() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        name: "",
-        college: "",
-        cgpa: "",
-        experience: [{ organization: "", startDate: "", endDate: "", ongoing: false }],
-        skills: [],
-        contact: { phone: "", email: "", linkedin: "" },
+  const [formData, setFormData] = useState({
+    name: "dangeti",
+    contact: { phone: "", email: "", linkedin: "", github: "" },
+    education: {
+      school: "",
+      marks: "",
+      college: "",
+      cgpa: "",
+      gradyr: "",
+    },
+    experience: [
+      { organization: "", startDate: "", endDate: "", role: "" },
+      { organization: "", startDate: "", endDate: "", role: "" },
+    ],
+    skills: [],
+    projects: [
+      { name: "", description: "" },
+      { name: "", description: "" },
+    ],
+  });
+
+  const print = () => {
+    console.log("Form Data:", formData);
+  };
+
+  const [skillInput, setSkillInput] = useState("");
+  const [skillLevel, setSkillLevel] = useState("Beginner");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    const contactFields = ["phone", "email", "linkedin", "github"];
+    const educationFields = ["school", "marks", "college", "cgpa", "gradyr"];
+
+    if (contactFields.includes(name)) {
+      setFormData((prev) => ({
+        ...prev,
+        contact: { ...prev.contact, [name]: value },
+      }));
+    } else if (educationFields.includes(name)) {
+      setFormData((prev) => ({
+        ...prev,
+        education: { ...prev.education, [name]: value },
+      }));
+    } else if (name.match(/^(organization|startDate|endDate|role)[12]$/)) {
+      const index = name.endsWith("1") ? 0 : 1;
+      setFormData((prev) => {
+        const updatedExperience = [...prev.experience];
+        updatedExperience[index][name.replace(/[12]/, "")] = value;
+        return { ...prev, experience: updatedExperience };
       });
-    
-      const [skillInput, setSkillInput] = useState("");
-      const [skillLevel, setSkillLevel] = useState("Beginner");
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-      };
-    
-      const handleAddSkill = () => {
-        if (skillInput.trim() === "") return;
-        setFormData({
-          ...formData,
-          skills: [...formData.skills, { name: skillInput, level: skillLevel }],
-        });
-        setSkillInput(""); // Reset input
-      };
-    
-      const handleRemoveSkill = (index) => {
-        const updatedSkills = [...formData.skills];
-        updatedSkills.splice(index, 1);
-        setFormData({ ...formData, skills: updatedSkills });
-      };
-    
+    } else if (name.match(/^(project|description)[12]$/)) {
+      const index = name.endsWith("1") ? 0 : 1;
+      setFormData((prev) => {
+        const updatedProjects = [...prev.projects];
+        updatedProjects[index][name.replace(/[12]/, "")] = value;
+        return { ...prev, projects: updatedProjects };
+      });
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleAddSkill = () => {
+    if (skillInput.trim() === "") return;
+    setFormData({
+      ...formData,
+      skills: [...formData.skills, { name: skillInput, level: skillLevel }],
+    });
+    setSkillInput(""); // Reset input
+  };
+
+  const handleRemoveSkill = (index) => {
+    const updatedSkills = [...formData.skills];
+    updatedSkills.splice(index, 1);
+    setFormData({ ...formData, skills: updatedSkills });
+  };
 
   return (
     <>
@@ -195,9 +239,13 @@ export default function ResumeForm() {
           >
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
-            <option value="Experienced">Experienced</option>    
+            <option value="Experienced">Experienced</option>
           </select>
-          <button type="button" onClick={handleAddSkill} className="form-button">
+          <button
+            type="button"
+            onClick={handleAddSkill}
+            className="form-button"
+          >
             Add Skill
           </button>
         </div>
@@ -206,8 +254,11 @@ export default function ResumeForm() {
         <ul className="skills-list">
           {formData.skills.map((skill, index) => (
             <li key={index} className="skill-item">
-              {skill.name}  <strong>{skill.level}</strong>
-              <button onClick={() => handleRemoveSkill(index)} className="remove-skill">
+              {skill.name} <strong>{skill.level}</strong>
+              <button
+                onClick={() => handleRemoveSkill(index)}
+                className="remove-skill"
+              >
                 Delete Skill
               </button>
             </li>
@@ -243,8 +294,15 @@ export default function ResumeForm() {
           onChange={handleChange}
           className="form-input"
         />
-        <button className="form-button" onClick={()=> navigate("/template")}>
-          Generate Resume</button>
+        <button
+          className="form-button"
+          onClick={() => navigate("/template", { state: { formData } })}
+        >
+          Generate Resume
+        </button>
+        <button className="form-button" onClick={print}>
+          Print Info
+        </button>
       </div>
     </>
   );
