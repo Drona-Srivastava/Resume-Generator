@@ -1,8 +1,8 @@
 import "../styles/template.css";
-import temp1 from "../templates/temp1.png";
-import temp2 from "../templates/temp2.png";
-import temp3 from "../templates/temp3.png";
-import temp4 from "../templates/temp4.png";
+import temp1 from "../images/temp1.png";
+import temp2 from "../images/temp2.png";
+import temp3 from "../images/temp3.png";
+import temp4 from "../images/temp4.png";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function ResumeTemplate() {

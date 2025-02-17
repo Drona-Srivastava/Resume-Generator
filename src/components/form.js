@@ -5,7 +5,8 @@ export default function ResumeForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "dangeti",
+    name: "",
+    role_applying:"",
     contact: { phone: "", email: "", linkedin: "", github: "" },
     education: {
       school: "",
@@ -34,38 +35,31 @@ export default function ResumeForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    const contactFields = ["phone", "email", "linkedin", "github"];
-    const educationFields = ["school", "marks", "college", "cgpa", "gradyr"];
-
-    if (contactFields.includes(name)) {
-      setFormData((prev) => ({
-        ...prev,
-        contact: { ...prev.contact, [name]: value },
-      }));
-    } else if (educationFields.includes(name)) {
-      setFormData((prev) => ({
-        ...prev,
-        education: { ...prev.education, [name]: value },
-      }));
-    } else if (name.match(/^(organization|startDate|endDate|role)[12]$/)) {
-      const index = name.endsWith("1") ? 0 : 1;
-      setFormData((prev) => {
+  
+    setFormData((prev) => {
+      if (name in prev) {
+        return { ...prev, [name]: value }; 
+      } else if (name in prev.contact) {
+        return { ...prev, contact: { ...prev.contact, [name]: value } };
+      } else if (name in prev.education) {
+        return { ...prev, education: { ...prev.education, [name]: value } };
+      } else if (name.match(/^(organization|startDate|endDate|role)[12]$/)) {
+        const index = name.endsWith("1") ? 0 : 1;
         const updatedExperience = [...prev.experience];
         updatedExperience[index][name.replace(/[12]/, "")] = value;
         return { ...prev, experience: updatedExperience };
-      });
-    } else if (name.match(/^(project|description)[12]$/)) {
-      const index = name.endsWith("1") ? 0 : 1;
-      setFormData((prev) => {
+      } else if (name.match(/^(project|description)[12]$/)) {
+        const index = name.endsWith("1") ? 0 : 1;
         const updatedProjects = [...prev.projects];
         updatedProjects[index][name.replace(/[12]/, "")] = value;
         return { ...prev, projects: updatedProjects };
-      });
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+      }
+  
+      return prev;
+    });
   };
+  
+  
 
   const handleAddSkill = () => {
     if (skillInput.trim() === "") return;
@@ -73,7 +67,7 @@ export default function ResumeForm() {
       ...formData,
       skills: [...formData.skills, { name: skillInput, level: skillLevel }],
     });
-    setSkillInput(""); // Reset input
+    setSkillInput("");
   };
 
   const handleRemoveSkill = (index) => {
@@ -109,7 +103,13 @@ export default function ResumeForm() {
           onChange={handleChange}
           className="form-input"
         />
-
+        <input
+          type="text"
+          name="role_applying"
+          placeholder="Role or Job Title"
+          onChange={handleChange}
+          className="form-input"
+        />
         {/* Education */}
         <h3 className="form-subtitle">Education </h3>
         <input

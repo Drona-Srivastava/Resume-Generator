@@ -1,4 +1,4 @@
-import "../styles/resume1.css";
+import "../styles/resume2.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Resume = () => {
@@ -8,7 +8,11 @@ const Resume = () => {
   const { formData } = location.state || {};
 
   if (!formData) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <div className="loader"></div>
+      </>
+    );
   } else {
     return (
       <div>

@@ -1,31 +1,30 @@
 import "../styles/temp_preview.css";
-import temp2 from "../templates/temp2.png";
-import { useNavigate } from "react-router-dom";
+import temp2 from "../images/temp2.png";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Temp2() {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state);
+  const { formData } = location.state || {};
   return (
     <>
       <p className="title">Template 2</p>
       <div className="container">
         <img className="temp_img" src={temp2} alt="temp2" />
         <div className="container2">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad quas
-          quasi sed voluptates! Velit, autem cupiditate libero tenetur eius
-          mollitia eum perspiciatis! Velit reprehenderit facere temporibus ipsam
-          similique voluptate iusto!
           <button
             className="temp_button"
-            onClick={() => {
-              Navigate("/template");
-            }}>
+            onClick={() => navigate("/template", { state: { formData } })}
+          >
             Explore other templates
           </button>
           <button
             className="temp_button"
             onClick={() => {
-              Navigate("/template");
-            }}>
+              navigate("/resume2", { state: { formData } });
+            }}
+          >
             Confirm this template
           </button>
         </div>
