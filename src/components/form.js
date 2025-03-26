@@ -6,7 +6,8 @@ export default function ResumeForm() {
 
   const [formData, setFormData] = useState({
     name: "",
-    role_applying:"",
+    role_applying: "",
+    summary: "", // Added summary field
     contact: { phone: "", email: "", linkedin: "", github: "" },
     education: {
       school: "",
@@ -51,7 +52,11 @@ export default function ResumeForm() {
       } else if (name.match(/^(project|description)[12]$/)) {
         const index = name.endsWith("1") ? 0 : 1;
         const updatedProjects = [...prev.projects];
-        updatedProjects[index][name.replace(/[12]/, "")] = value;
+        if (name.startsWith("project")) {
+          updatedProjects[index].name = value; // Map project1/project2 to name
+        } else {
+          updatedProjects[index].description = value;
+        }
         return { ...prev, projects: updatedProjects };
       }
   
@@ -107,6 +112,12 @@ export default function ResumeForm() {
           type="text"
           name="role_applying"
           placeholder="Role or Job Title"
+          onChange={handleChange}
+          className="form-input"
+        />
+        <textarea
+          name="summary"
+          placeholder="Short summary about yourself"
           onChange={handleChange}
           className="form-input"
         />
