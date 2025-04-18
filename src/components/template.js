@@ -14,7 +14,7 @@ export default function ResumeTemplate() {
   return (
     <>
       <h3>Choose a Resume Template</h3>
-      {formData ? <h1>{formData.name} HI</h1> : <h1>No Form Data</h1>}
+      {/* {formData ? <h1>{formData.name} HI</h1> : <h1>No Form Data</h1>} */}
       <div className="container">
         <div className="temps">
           <img

@@ -5,34 +5,31 @@ export default function ResumeForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "John Doe",
-    role_applying: "Software Engineer",
-    summary: "A passionate developer with expertise in full-stack development.",
+    name: "",
+    role_applying: "",
+    summary: "",
     contact: { 
-      phone: "1234567890", 
-      email: "johndoe@example.com", 
-      linkedin: "linkedin.com/in/johndoe", 
-      github: "github.com/johndoe" 
+      phone: "", 
+      email: "", 
+      linkedin: "", 
+      github: "" 
     },
     education: {
-      school: "ABC High School",
-      marks: "95%",
-      college: "XYZ University",
-      degree: "B.Tech",
-      cgpa: "9.0",
-      gradyr: "2023",
+      school: "",
+      marks: "",
+      college: "",
+      degree: "",
+      cgpa: "",
+      gradyr: "",
     },
     experience: [
-      { organization: "Tech Corp", startDate: "Jan 2021", endDate: "Dec 2022", role: "Frontend Developer" },
-      { organization: "Innovate Ltd", startDate: "Feb 2020", endDate: "Dec 2020", role: "Intern" },
+      { organization: "", startDate: "", endDate: "", role: "" },
+      { organization: "", startDate: "", endDate: "", role: "" },
     ],
-    skills: [
-      { name: "JavaScript", level: "Experienced" },
-      { name: "React", level: "Intermediate" },
-    ],
+    skills: [],
     projects: [
-      { name: "Portfolio Website", description: "A personal portfolio website to showcase my projects and skills." },
-      { name: "E-commerce App", description: "A full-stack e-commerce application with payment integration." },
+      { name: "", description: "" },
+      { name: "", description: "" },
     ],
   });
 
@@ -72,8 +69,6 @@ export default function ResumeForm() {
       return prev;
     });
   };
-  
-  
 
   const handleAddSkill = () => {
     if (skillInput.trim() === "") return;
@@ -327,9 +322,9 @@ export default function ResumeForm() {
         >
           Generate Resume
         </button>
-        <button className="form-button" onClick={print}>
+        {/* <button className="form-button" onClick={print}>
           Print Info
-        </button>
+        </button> */}
       </div>
     </>
   );
