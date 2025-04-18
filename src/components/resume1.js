@@ -110,7 +110,7 @@ const Resume1 = () => {
                 <li>Marks:{" "} {formData.education.marks || "N/A"}</li>
               </ul>
               <strong>College: </strong>
-              {formData.education.college || "College Name"}
+              {formData.education.college || "College Name"} - {formData.education.degree || "Degree"}
               <ul id="edu_ul">
                 <li>CGPA: {formData.education.cgpa || "N/A"} </li>
                 <li>Graduation Year: {formData.education.gradyr || "N/A"}</li>

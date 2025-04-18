@@ -5,25 +5,34 @@ export default function ResumeForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
-    role_applying: "",
-    summary: "", // Added summary field
-    contact: { phone: "", email: "", linkedin: "", github: "" },
+    name: "John Doe",
+    role_applying: "Software Engineer",
+    summary: "A passionate developer with expertise in full-stack development.",
+    contact: { 
+      phone: "1234567890", 
+      email: "johndoe@example.com", 
+      linkedin: "linkedin.com/in/johndoe", 
+      github: "github.com/johndoe" 
+    },
     education: {
-      school: "",
-      marks: "",
-      college: "",
-      cgpa: "",
-      gradyr: "",
+      school: "ABC High School",
+      marks: "95%",
+      college: "XYZ University",
+      degree: "B.Tech",
+      cgpa: "9.0",
+      gradyr: "2023",
     },
     experience: [
-      { organization: "", startDate: "", endDate: "", role: "" },
-      { organization: "", startDate: "", endDate: "", role: "" },
+      { organization: "Tech Corp", startDate: "Jan 2021", endDate: "Dec 2022", role: "Frontend Developer" },
+      { organization: "Innovate Ltd", startDate: "Feb 2020", endDate: "Dec 2020", role: "Intern" },
     ],
-    skills: [],
+    skills: [
+      { name: "JavaScript", level: "Experienced" },
+      { name: "React", level: "Intermediate" },
+    ],
     projects: [
-      { name: "", description: "" },
-      { name: "", description: "" },
+      { name: "Portfolio Website", description: "A personal portfolio website to showcase my projects and skills." },
+      { name: "E-commerce App", description: "A full-stack e-commerce application with payment integration." },
     ],
   });
 
@@ -141,6 +150,13 @@ export default function ResumeForm() {
           type="text"
           name="college"
           placeholder="College Name"
+          onChange={handleChange}
+          className="form-input"
+        />
+        <input
+          type="text"
+          name="degree"
+          placeholder="Degree (e.g., B.Tech, M.Sc)"
           onChange={handleChange}
           className="form-input"
         />

@@ -1,43 +1,342 @@
-/* Loader Animation */
-.loader {
-  position: relative;
-  top: 320px;
-  left: 750px;
-  width: 50px;
-  height: 50px;
-  color: #554cb5;
-  position: relative;
-  background: radial-gradient(11.2px, currentColor 94%, #0000);
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-.loader:before {
-  content: "";
+body {
+  background-color: #f5f5f5;
+}
+
+/* Page Layout */
+.resume4_page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.button_container {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.download_button {
+  background-color: #004a99;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px; 
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.download_button:hover {
+  background-color: #003a78;
+}
+
+/* Resume Container */
+.resume4_container {
+  width: 100%;
+  max-width: 800px;
+  min-height: 1120px; /* A4 approximate height */
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  position: relative; /* Needed for absolute positioning of visual elements */
+  overflow: hidden; /* Prevents elements from spilling out */
+}
+
+/* Header Section */
+.resume4_header {
+  background-color: #ddeeff; 
+  padding: 40px 20px 40px;
+  text-align: center;
+  position: relative; 
+}
+
+.resume4_name {
+  font-size: 33px; 
+  font-weight: 700;
+  color: #004a99;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.resume4_role {
+  font-size: 19px; 
+  font-weight: 400;
+  color: #555555;
+}
+
+/* Header decorative lines */
+.header_line_left, .header_line_right {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(10.08px at bottom right, #0000 94%, currentColor)
-      top left,
-    radial-gradient(10.08px at bottom left, #0000 94%, currentColor) top right,
-    radial-gradient(10.08px at top right, #0000 94%, currentColor) bottom left,
-    radial-gradient(10.08px at top left, #0000 94%, currentColor) bottom right;
-  background-size: 22.4px 22.4px;
-  background-repeat: no-repeat;
-  animation: loader 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+  top: 50%;
+  width: 140px; 
+  height: 1px;
+  background-color: #004a99;
 }
 
-@keyframes loader {
-  33% {
-    inset: -11.2px;
-    transform: rotate(0deg);
+.header_line_left {
+  left: 10px; 
+}
+
+.header_line_right {
+  right: 10px; 
+}
+
+/* Decorative circles on the header lines */
+.header_circle_left, .header_circle_right {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #004a99;
+  border-radius: 50%;
+  background-color: #ddeeff; /* Match header background */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.header_circle_left {
+  left: 140px; /* Position at the end of the left line */
+}
+
+.header_circle_right {
+  right: 140px; /* Position at the end of the right line */
+}
+
+/* Body Layout */
+.resume4_body {
+  display: flex;
+  min-height: calc(1120px - 120px); /* Adjust based on header height */
+  position: relative; /* Crucial for positioning visual_elements */
+}
+
+/* Visual elements container for lines and circles */
+.visual_elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicking through to content */
+  z-index: 10; /* Ensure it's above content background but below interactive elements */
+  overflow: hidden; /* Prevent lines/circles spilling out */
+}
+
+/* Vertical divider line */
+.vertical_divider {
+  position: absolute;
+  top: 0;
+  /* Position based on left column flex basis (35%) */
+  left: 35%;
+  height: 100%;
+  width: 1px; /* Line thickness */
+  background-color: #004a99; /* Line color */
+  z-index: 9; /* Below lines and circles */
+}
+
+/* Horizontal divider lines - Base styles */
+.horizontal_divider {
+  position: absolute;
+  height: 1px; 
+  background-color: #004a99; 
+  z-index: 10; 
+  height: 1px;
+}
+
+/* Circle at intersection - Base styles */
+.intersection_circle {
+  position: absolute;
+  width: 8px; 
+  height: 8px; 
+  border: 1px solid #004a99; 
+  border-radius: 50%;
+  background-color: white; 
+  z-index: 11; /* Ensure circle is above the horizontal line */
+  
+  /* Position the circle exactly at the intersection point */
+  right: 0;
+  top: -4px; /* Perfectly center on the line (-4px = half height of circle + 0.5px line offset) */
+  transform: translateX(50%); /* Center horizontally at the vertical divider */
+}
+
+/* Left Column */
+.resume4_left {
+  flex: 0.35; /* Width = 35% */
+  padding: 30px 25px;
+  background-color: white; /* Ensure background is white */
+  position: relative; /* Needed for z-index stacking context */
+  z-index: 5; /* Keep content above visual elements background */
+}
+
+/* Right Column */
+.resume4_right {
+  flex: 0.65; /* Width = 65% */
+  padding: 30px 25px;
+  background-color: white; /* Ensure background is white */
+  position: relative; /* Needed for z-index stacking context */
+  z-index: 5; /* Keep content above visual elements background */
+}
+
+/* Section Titles */
+.section_title {
+  color: #1C3B57;
+  font-size: 18px; 
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 15px; /* Space below title before content starts */
+  letter-spacing: 1px; 
+  position: relative; /* For first_letter_circle positioning */
+}
+
+
+.work_section .section_title {
+  letter-spacing: 2px; /* Extra space for Work Experience title */
+}
+
+/* First letter circle */
+.first_letter_circle {
+  display: inline-block;
+  width: 25px; 
+  height: 25px; 
+  background-color: #ddeeff; /* Match header background */
+  border-radius: 50%;
+  text-align: center;
+  line-height: 25px; 
+  margin-right: 4px;
+  font-size: 17px; 
+  font-weight: 700;
+  color: #004a99; 
+}
+
+/* Adjust spacing between sections */
+.resume4_left > section,
+.resume4_right > section {
+  margin-bottom: 40px; /* Increased from 30px */
+}
+
+/* Explicitly add more space after contact section to align with profile summary */
+.contact_section {
+  margin-bottom: 50px !important; /* Force this to override the default */
+}
+
+
+.education_section, 
+.work_section {
+  padding-bottom: 10px; 
+}
+
+.resume4_left > section:last-child,
+.resume4_right > section:last-child {
+    margin-bottom: 20px; 
+}
+
+/* Contact Section */
+.contact_item { display: flex; align-items: center; margin-bottom: 8px; gap: 10px; }
+.contact_icon { color: #004a99; font-size: 17px; min-width: 17px; }
+.contact_text { font-size: 15px; color: #333333; } 
+
+/* Education Section */
+.education_section > div { margin-bottom: 15px; } 
+.edu_duration { font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 2px; } 
+.edu_institution { font-size: 15px; margin-bottom: 2px; color: #333333; font-weight: bold; text-transform: uppercase; } 
+.edu_details { font-size: 15px; color: #555555; margin-bottom: 2px; } 
+
+/* Skills Section */
+.skills_section ul { list-style-type: none; }
+.skills_section li { font-size: 15px; color: #333333; margin-bottom: 6px; position: relative; padding-left: 15px; line-height: 1.3; } 
+.skills_section li::before { content: "•"; position: absolute; left: 0; color: #004a99; }
+
+/* Languages Section */
+.languages_section ul { list-style-type: none; }
+.languages_section li { font-size: 15px; color: #333333; margin-bottom: 6px; position: relative; padding-left: 15px; line-height: 1.3; } 
+.languages_section li::before { content: "•"; position: absolute; left: 0; color: #004a99; }
+
+/* Profile Summary Section */
+.profile_section p { font-size: 15px; color: #333333; line-height: 1.5; text-align: justify; } 
+.profile_section { margin-bottom: 30px; } 
+
+.work_section {
+  margin-top: 20px;
+  padding-top: 10px; 
+}
+
+.work_section .section_title {
+  margin-top: 10px; 
+}
+
+.work_entry { margin-bottom: 20px; }
+.work_header { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.work_header strong { font-size: 16px; color: #333333; } 
+.work_header span { font-size: 15px; color: #333333; font-weight: 600; } 
+.work_role { font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 6px; } 
+.work_section ul { padding-left: 5px; list-style: none; }
+.work_section li { font-size: 15px; color: #333333; margin-bottom: 4px; line-height: 1.4; position: relative; padding-left: 15px; } 
+.work_section li::before { content: "•"; position: absolute; left: 0; color: #004a99; }
+
+/* Projects Section*/
+.projects_section {
+  margin-top: 25px; 
+}
+
+.project_entry {
+  margin-bottom: 15px;
+}
+
+.project_name {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.project_description {
+  font-size: 15px;
+  color: #333333;
+  line-height: a1.4;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .resume4_body {
+    flex-direction: column; /* Stack columns */
   }
 
-  66% {
-    inset: -11.2px;
-    transform: rotate(90deg);
+  .resume4_left, .resume4_right {
+    width: 100%; /* Full width */
+    flex: none; /* Reset flex property */
   }
 
-  100% {
-    inset: 0;
-    transform: rotate(90deg);
+  /* Hide the visual timeline elements on smaller screens */
+  .visual_elements {
+    display: none;
   }
+
+  /* Hide header decorative lines on smaller screens */
+  .header_line_left, .header_line_right,
+  .header_circle_left, .header_circle_right {
+    display: none;
+  }
+
+  /* Adjust section margins for stacked layout if needed */
+  .resume4_left > section,
+  .resume4_right > section {
+      /* Use the same adjusted margin for consistency in stacked view */
+      margin-bottom: 30px;
+  }
+   .resume4_left > section:last-child,
+   .resume4_right > section:last-child {
+       margin-bottom: 20px; /* Keep last child margin potentially smaller */
+   }
 }

@@ -1,5 +1,276 @@
+.res2_resume {
+  max-width: 800px;
+  /* margin: 10px; */
+  /* padding: 20px; */
+  border: 2px solid black;
+}
+
+.res2_resume1_page {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
+  align-items: center;
+  flex-direction: row-reverse; /* Place button on the right */
+}
+.res2_resume-header {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 0px 30px;
+  height: 200px;
+}
+
+.res2_left {
+  text-align: left;
+  font-family: "Playfair Display", serif; 
+}
+
+#res2_name {
+  color: #545454;
+  font-size: 50px;
+}
+
+#res2_hr1 {
+  border: 0;
+  height: 4px;
+  background-color: #848484;
+  margin: 10px 0;
+}
+
+#res2_hr2 {
+  border: 0;
+  height: 10px;
+  background-color: #848484;
+  margin: 0px;
+}
+
+#res2_role {
+  color: #828282;
+  font-size: 10px;
+  margin-top: 0px;
+}
+
+#res2_sum, #res2_edu, #res2_proj, #res2_prof, #res2_skills {
+  color: #545454;
+  font-size: 25px;
+  margin: 0px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif; 
+}
+
+.res2_section-hr {
+  border: 0;
+  height: 4px;
+  background-color: #848484;
+  margin: 10px 0;
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+#res2_sum ~ .res2_section-hr {
+  left: 25%;
+}
+
+#res2_edu ~ .res2_section-hr {
+  left: 23%;
+}
+
+#res2_skills ~ .res2_section-hr {
+  left: 23%;
+}
+
+.res2_experience h3 ~ .res2_section-hr {
+  left: 24%;
+}
+
+#res2_sum_p {
+  color: #777777;
+  font-size: 15px;
+  margin-top: 0px;
+  font-weight: 500;
+  padding: 0px 20px;
+  text-align: center;
+  font-family: "Playfair Display", serif; 
+}
+
+.res2_resume-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.res2_resume-header h2 {
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.res2_contact-info p {
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.res2_summary,
+.res2_education,
+.res2_skills,
+.res2_certifications,
+.res2_experience,
+.res2_projects {
+  margin-top: 30px;
+}
+
+.res2_education {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+
+#res2_edu {
+  color: #545454;
+  font-size: 25px;
+  margin: 0px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+}
+
+#res2_edu_ul {
+  color: #777777;
+  font-size: 15px;
+  margin-top: 0px;
+  font-weight: 500;
+  padding: 0px 20px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  list-style: none;
+  padding: 0;
+}
+
+#res2_edu_ul li {
+  text-align: center;
+}
+
+.res2_skills {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+
+#res2_skills {
+  color: #545454;
+  font-size: 25px;
+  margin: 0px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+}
+
+.res2_skills ul {
+  color: #777777;
+  font-size: 15px;
+  margin-top: 0px;
+  font-weight: 500;
+  padding: 0px 20px;
+  text-align: left;
+  font-family: "Playfair Display", serif;
+  list-style: none;
+  padding: 0;
+}
+
+.res2_skills ul li {
+  text-align: center;
+  margin-left: 0;
+}
+
+.res2_experience {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+
+.res2_experience h3 {
+  color: #545454;
+  font-size: 25px;
+  margin: 0px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+}
+
+#res2_prof_div {
+  color: #777777;
+  font-size: 15px;
+  margin-top: 0px;
+  font-weight: 500;
+  padding: 0px 20px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+
+.res2_projects {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  margin-top: 30px;
+}
+
+#res2_projects {
+  color: #545454;
+  font-size: 25px;
+  margin: 0px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+}
+
+.res2_projects ul {
+  color: #777777;
+  font-size: 15px;
+  margin-top: 0px;
+  font-weight: 500;
+  padding: 0px 20px;
+  text-align: left;
+  font-family: "Playfair Display", serif;
+  list-style: none;
+  padding: 0;
+}
+
+.res2_projects ul li {
+  text-align: center;
+  margin-left: 0;
+}
+
+.res2_education-item,
+.res2_experience-item {
+  margin-bottom: 20px;
+}
+
+.res2_education-item h4,
+.res2_experience-item h4 {
+  font-weight: bold;
+}
+
+.res2_skills ul,
+.res2_certifications ul,
+.res2_experience-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.res2_skills ul li,
+.res2_certifications ul li,
+.res2_experience-item ul li {
+  text-align: center;
+  margin-left: 0;
+}
+.button_container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px; /* Adjust margin for reversed layout */
+}
 /* Loader Animation */
-.loader {
+.res2_loader {
   position: relative;
   top: 320px;
   left: 750px;
@@ -10,7 +281,7 @@
   background: radial-gradient(11.2px, currentColor 94%, #0000);
 }
 
-.loader:before {
+.res2_loader:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -22,10 +293,10 @@
     radial-gradient(10.08px at top left, #0000 94%, currentColor) bottom right;
   background-size: 22.4px 22.4px;
   background-repeat: no-repeat;
-  animation: loader 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+  animation: res2_loader 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
 }
 
-@keyframes loader {
+@keyframes res2_loader {
   33% {
     inset: -11.2px;
     transform: rotate(0deg);
@@ -40,4 +311,22 @@
     inset: 0;
     transform: rotate(90deg);
   }
+}
+
+.res2_download_button {
+  width: 200px; /* Increased width */
+  padding: 15px; /* Increased padding */
+  border-radius: 10px;
+  background: linear-gradient(135deg, #88d8b0, #a1c4fd);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+  border: none;
+  color: white;
+}
+
+.res2_download_button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
 }
