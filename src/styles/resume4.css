@@ -1,342 +1,371 @@
-/* Reset CSS */
+/* Resume Styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --background-color: #f5f7fa;
+  --light-accent: #e8f4fc;
+  --dark-accent: #1a5276;
+  --text-color: #333;
+  --light-text: #666;
+  --background: #ffffff;
+  --section-heading-color: #1a365d;
+  --section-heading-bg: #f5f7fa;
+  --line-color: #e0e0e0;
+  --skill-beginner: #e8f4fc;
+  --skill-intermediate: #bde2fb;
+  --skill-experienced: #90caf9;
+  --skill-text: #0d47a1;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
 }
 
 body {
-  background-color: #f5f5f5;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
 }
 
-/* Page Layout */
-.resume4_page {
-  width: 100%;
-  min-height: 100vh;
+/* Resume Page Layout */
+.resume-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #f5f5f5;
+  padding: 2rem;
 }
 
-.button_container {
+.button-container {
+  margin-bottom: 2rem;
   width: 100%;
   max-width: 800px;
-  margin-bottom: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.download_button {
-  background-color: #004a99;
+.download-button {
+  background-color: var(--accent-color);
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 17px; 
-  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   border-radius: 4px;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.download_button:hover {
-  background-color: #003a78;
+.download-button:hover {
+  background-color: var(--dark-accent);
 }
 
-/* Resume Container */
-.resume4_container {
+.resume-container {
   width: 100%;
   max-width: 800px;
-  min-height: 1120px; /* A4 approximate height */
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  position: relative; /* Needed for absolute positioning of visual elements */
-  overflow: hidden; /* Prevents elements from spilling out */
+  min-height: 1100px;
+  background-color: var(--background);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  position: relative;
 }
 
-/* Header Section */
-.resume4_header {
-  background-color: #ddeeff; 
-  padding: 40px 20px 40px;
+/* Header Styles */
+.header {
   text-align: center;
-  position: relative; 
-}
-
-.resume4_name {
-  font-size: 33px; 
-  font-weight: 700;
-  color: #004a99;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-.resume4_role {
-  font-size: 19px; 
-  font-weight: 400;
-  color: #555555;
-}
-
-/* Header decorative lines */
-.header_line_left, .header_line_right {
-  position: absolute;
-  top: 50%;
-  width: 140px; 
-  height: 1px;
-  background-color: #004a99;
-}
-
-.header_line_left {
-  left: 10px; 
-}
-
-.header_line_right {
-  right: 10px; 
-}
-
-/* Decorative circles on the header lines */
-.header_circle_left, .header_circle_right {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid #004a99;
-  border-radius: 50%;
-  background-color: #ddeeff; /* Match header background */
-  top: 50%;
-  transform: translateY(-50%); /* Center vertically */
-}
-
-.header_circle_left {
-  left: 140px; /* Position at the end of the left line */
-}
-
-.header_circle_right {
-  right: 140px; /* Position at the end of the right line */
-}
-
-/* Body Layout */
-.resume4_body {
-  display: flex;
-  min-height: calc(1120px - 120px); /* Adjust based on header height */
-  position: relative; /* Crucial for positioning visual_elements */
-}
-
-/* Visual elements container for lines and circles */
-.visual_elements {
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin-bottom: 2rem;
+  background-color: #bde2fb;
   width: 100%;
-  height: 100%;
-  pointer-events: none; /* Allows clicking through to content */
-  z-index: 10; /* Ensure it's above content background but below interactive elements */
-  overflow: hidden; /* Prevent lines/circles spilling out */
+  margin-top: 0px;
+  height:155px;
+  border-radius: 5px;
 }
 
-/* Vertical divider line */
-.vertical_divider {
-  position: absolute;
-  top: 0;
-  /* Position based on left column flex basis (35%) */
-  left: 35%;
-  height: 100%;
-  width: 1px; /* Line thickness */
-  background-color: #004a99; /* Line color */
-  z-index: 9; /* Below lines and circles */
-}
-
-/* Horizontal divider lines - Base styles */
-.horizontal_divider {
-  position: absolute;
-  height: 1px; 
-  background-color: #004a99; 
-  z-index: 10; 
-  height: 1px;
-}
-
-/* Circle at intersection - Base styles */
-.intersection_circle {
-  position: absolute;
-  width: 8px; 
-  height: 8px; 
-  border: 1px solid #004a99; 
-  border-radius: 50%;
-  background-color: white; 
-  z-index: 11; /* Ensure circle is above the horizontal line */
-  
-  /* Position the circle exactly at the intersection point */
-  right: 0;
-  top: -4px; /* Perfectly center on the line (-4px = half height of circle + 0.5px line offset) */
-  transform: translateX(50%); /* Center horizontally at the vertical divider */
-}
-
-/* Left Column */
-.resume4_left {
-  flex: 0.35; /* Width = 35% */
-  padding: 30px 25px;
-  background-color: white; /* Ensure background is white */
-  position: relative; /* Needed for z-index stacking context */
-  z-index: 5; /* Keep content above visual elements background */
-}
-
-/* Right Column */
-.resume4_right {
-  flex: 0.65; /* Width = 65% */
-  padding: 30px 25px;
-  background-color: white; /* Ensure background is white */
-  position: relative; /* Needed for z-index stacking context */
-  z-index: 5; /* Keep content above visual elements background */
-}
-
-/* Section Titles */
-.section_title {
-  color: #1C3B57;
-  font-size: 18px; 
-  font-weight: 700;
-  text-align: left;
+.name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 15px; /* Space below title before content starts */
-  letter-spacing: 1px; 
-  position: relative; /* For first_letter_circle positioning */
 }
 
-
-.work_section .section_title {
-  letter-spacing: 2px; /* Extra space for Work Experience title */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
 }
 
-/* First letter circle */
-.first_letter_circle {
-  display: inline-block;
-  width: 25px; 
-  height: 25px; 
-  background-color: #ddeeff; /* Match header background */
-  border-radius: 50%;
-  text-align: center;
-  line-height: 25px; 
-  margin-right: 4px;
-  font-size: 17px; 
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--light-text);
+}
+
+.contact-icon {
+  margin-right: 0.5rem;
+  color: var(--accent-color);
+}
+
+/* Summary Section */
+.summary-section {
+  margin-bottom: 2rem;
+}
+
+.summary-text {
+  text-align: justify;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  color: var(--section-heading-color);
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #004a99; 
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line-color);
+  padding-bottom: 0.5rem;
+  background-color: var(--section-heading-bg);
+  padding: 8px;
 }
 
-/* Adjust spacing between sections */
-.resume4_left > section,
-.resume4_right > section {
-  margin-bottom: 40px; /* Increased from 30px */
+.section-content {
+  padding: 0.5rem 0;
 }
 
-/* Explicitly add more space after contact section to align with profile summary */
-.contact_section {
-  margin-bottom: 50px !important; /* Force this to override the default */
+.empty-section {
+  min-height: 50px;
+}
+
+/* Two Column Layout */
+.two-column-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  flex: 1.3;
+}
+
+/* Education Styles */
+.education-item {
+  margin-bottom: 1.5rem;
+}
+
+.education-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-details {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.education-details li {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Skills Styles */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.skill-category {
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.skill-level {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--skill-text);
+  text-align: center;
+  min-width: 100px;
+}
+
+.level-beginner {
+  background-color: var(--skill-beginner);
+}
+
+.level-intermediate {
+  background-color: var(--skill-intermediate);
+}
+
+.level-experienced {
+  background-color: var(--skill-experienced);
+}
+
+/* Experience Styles */
+.experience-item {
+  margin-bottom: 1.5rem;
+}
+
+.experience-company {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.experience-title {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.experience-details {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.experience-details li {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Project Styles */
+.project-item {
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.contact-item a{
+  text-decoration: none;
+  color: #333;
 }
 
 
-.education_section, 
-.work_section {
-  padding-bottom: 10px; 
+.project-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #0d47a1;
 }
 
-.resume4_left > section:last-child,
-.resume4_right > section:last-child {
-    margin-bottom: 20px; 
+.project-details {
+  list-style-type: disc;
+  padding-left: 1.5rem;
 }
 
-/* Contact Section */
-.contact_item { display: flex; align-items: center; margin-bottom: 8px; gap: 10px; }
-.contact_icon { color: #004a99; font-size: 17px; min-width: 17px; }
-.contact_text { font-size: 15px; color: #333333; } 
-
-/* Education Section */
-.education_section > div { margin-bottom: 15px; } 
-.edu_duration { font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 2px; } 
-.edu_institution { font-size: 15px; margin-bottom: 2px; color: #333333; font-weight: bold; text-transform: uppercase; } 
-.edu_details { font-size: 15px; color: #555555; margin-bottom: 2px; } 
-
-/* Skills Section */
-.skills_section ul { list-style-type: none; }
-.skills_section li { font-size: 15px; color: #333333; margin-bottom: 6px; position: relative; padding-left: 15px; line-height: 1.3; } 
-.skills_section li::before { content: "•"; position: absolute; left: 0; color: #004a99; }
-
-/* Languages Section */
-.languages_section ul { list-style-type: none; }
-.languages_section li { font-size: 15px; color: #333333; margin-bottom: 6px; position: relative; padding-left: 15px; line-height: 1.3; } 
-.languages_section li::before { content: "•"; position: absolute; left: 0; color: #004a99; }
-
-/* Profile Summary Section */
-.profile_section p { font-size: 15px; color: #333333; line-height: 1.5; text-align: justify; } 
-.profile_section { margin-bottom: 30px; } 
-
-.work_section {
-  margin-top: 20px;
-  padding-top: 10px; 
+.project-details li {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
 }
 
-.work_section .section_title {
-  margin-top: 10px; 
+/* Footer Styles */
+.footer {
+  margin-top: 2rem;
+  border-top: 1px solid var(--line-color);
+  padding-top: 1rem;
+  text-align: center;
 }
 
-.work_entry { margin-bottom: 20px; }
-.work_header { display: flex; justify-content: space-between; margin-bottom: 4px; }
-.work_header strong { font-size: 16px; color: #333333; } 
-.work_header span { font-size: 15px; color: #333333; font-weight: 600; } 
-.work_role { font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 6px; } 
-.work_section ul { padding-left: 5px; list-style: none; }
-.work_section li { font-size: 15px; color: #333333; margin-bottom: 4px; line-height: 1.4; position: relative; padding-left: 15px; } 
-.work_section li::before { content: "•"; position: absolute; left: 0; color: #004a99; }
-
-/* Projects Section*/
-.projects_section {
-  margin-top: 25px; 
+.footer-text {
+  color: var(--light-text);
+  font-size: 0.9rem;
 }
 
-.project_entry {
-  margin-bottom: 15px;
-}
-
-.project_name {
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-
-.project_description {
-  font-size: 15px;
-  color: #333333;
-  line-height: a1.4;
-}
-
-/* Media Queries for Responsiveness */
-@media screen and (max-width: 768px) {
-  .resume4_body {
-    flex-direction: column; /* Stack columns */
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .resume-container {
+    padding: 1.5rem;
   }
-
-  .resume4_left, .resume4_right {
-    width: 100%; /* Full width */
-    flex: none; /* Reset flex property */
+  
+  .two-column-layout {
+    flex-direction: column;
   }
-
-  /* Hide the visual timeline elements on smaller screens */
-  .visual_elements {
-    display: none;
+  
+  .name {
+    font-size: 2rem;
   }
-
-  /* Hide header decorative lines on smaller screens */
-  .header_line_left, .header_line_right,
-  .header_circle_left, .header_circle_right {
-    display: none;
+  
+  .contact-info {
+    flex-direction: column;
+    gap: 0.5rem;
   }
+  
+}
 
-  /* Adjust section margins for stacked layout if needed */
-  .resume4_left > section,
-  .resume4_right > section {
-      /* Use the same adjusted margin for consistency in stacked view */
-      margin-bottom: 30px;
-  }
-   .resume4_left > section:last-child,
-   .resume4_right > section:last-child {
-       margin-bottom: 20px; /* Keep last child margin potentially smaller */
-   }
+.education-gpa{
+  margin-top: 5px;
+}
+
+.achievement{
+  padding-left: 20px;
+  list-style-type: circle;
+  margin-top: 10px;
+  
+}
+.achievement li::marker {
+  color: #56b4f2;
+}
+
+
+.achievement li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+.education-period{
+  margin-left: 235px;
+  margin-top: -25px;
+  color: #56b4f2;
+}
+.project-details-item{
+  font-family: 'Times New Roman', Times, serif;
+}
+.course{
+  display: inline;
+  font-family:'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 19px;
+}
+.senior{
+  font-family:'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 19px;
+}
+.experience-period{
+  color: #56b4f2;
 }

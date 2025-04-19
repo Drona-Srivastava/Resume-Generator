@@ -36,7 +36,7 @@ export default function ResumeTemplate() {
             }}
           />
         </div>
-        <div className="temps">
+        {/* <div className="temps">
           <img
             src={temp3}
             alt="temp3"
@@ -45,7 +45,7 @@ export default function ResumeTemplate() {
               navigate("/temp3", { state: { formData } });
             }}
           />
-        </div>
+        </div> */}
         <div className="temps">
           <img
             src={temp4}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/form.css";
+
 export default function ResumeForm() {
   const navigate = useNavigate();
 
@@ -8,17 +9,12 @@ export default function ResumeForm() {
     name: "",
     role_applying: "",
     summary: "",
-    contact: { 
-      phone: "", 
-      email: "", 
-      linkedin: "", 
-      github: "" 
-    },
+    contact: { phone: "", email: "", linkedin: "", github: "" },
     education: {
       school: "",
       marks: "",
       college: "",
-      degree: "",
+      course: "",
       cgpa: "",
       gradyr: "",
     },
@@ -31,6 +27,7 @@ export default function ResumeForm() {
       { name: "", description: "" },
       { name: "", description: "" },
     ],
+    achievements: [], // ✅ new
   });
 
   const print = () => {
@@ -39,13 +36,14 @@ export default function ResumeForm() {
 
   const [skillInput, setSkillInput] = useState("");
   const [skillLevel, setSkillLevel] = useState("Beginner");
+  const [achievementInput, setAchievementInput] = useState(""); // ✅ new
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
+
     setFormData((prev) => {
       if (name in prev) {
-        return { ...prev, [name]: value }; 
+        return { ...prev, [name]: value };
       } else if (name in prev.contact) {
         return { ...prev, contact: { ...prev.contact, [name]: value } };
       } else if (name in prev.education) {
@@ -59,13 +57,13 @@ export default function ResumeForm() {
         const index = name.endsWith("1") ? 0 : 1;
         const updatedProjects = [...prev.projects];
         if (name.startsWith("project")) {
-          updatedProjects[index].name = value; // Map project1/project2 to name
+          updatedProjects[index].name = value;
         } else {
           updatedProjects[index].description = value;
         }
         return { ...prev, projects: updatedProjects };
       }
-  
+
       return prev;
     });
   };
@@ -83,6 +81,22 @@ export default function ResumeForm() {
     const updatedSkills = [...formData.skills];
     updatedSkills.splice(index, 1);
     setFormData({ ...formData, skills: updatedSkills });
+  };
+
+  // ✅ Achievement handlers
+  const handleAddAchievement = () => {
+    if (achievementInput.trim() === "") return;
+    setFormData({
+      ...formData,
+      achievements: [...formData.achievements, achievementInput],
+    });
+    setAchievementInput("");
+  };
+
+  const handleRemoveAchievement = (index) => {
+    const updated = [...formData.achievements];
+    updated.splice(index, 1);
+    setFormData({ ...formData, achievements: updated });
   };
 
   return (
@@ -125,8 +139,9 @@ export default function ResumeForm() {
           onChange={handleChange}
           className="form-input"
         />
+
         {/* Education */}
-        <h3 className="form-subtitle">Education </h3>
+        <h3 className="form-subtitle">Education</h3>
         <input
           type="text"
           name="school"
@@ -150,8 +165,8 @@ export default function ResumeForm() {
         />
         <input
           type="text"
-          name="degree"
-          placeholder="Degree (e.g., B.Tech, M.Sc)"
+          name="course"
+          placeholder="Course"
           onChange={handleChange}
           className="form-input"
         />
@@ -170,7 +185,7 @@ export default function ResumeForm() {
           className="form-input"
         />
 
-        {/* Social */}
+        {/* Socials */}
         <input
           type="text"
           name="linkedin"
@@ -187,7 +202,7 @@ export default function ResumeForm() {
         />
 
         {/* Experience */}
-        <h3 className="form-subtitle">Experience (Max 2) </h3>
+        <h3 className="form-subtitle">Experience (Max 2)</h3>
         <input
           type="text"
           name="organization1"
@@ -244,7 +259,8 @@ export default function ResumeForm() {
           onChange={handleChange}
           className="form-input"
         />
-        {/* Skills Section */}
+
+        {/* Skills */}
         <h3 className="form-subtitle">Skills</h3>
         <div className="skills-input-container">
           <input
@@ -272,7 +288,6 @@ export default function ResumeForm() {
           </button>
         </div>
 
-        {/* Display Added Skills */}
         <ul className="skills-list">
           {formData.skills.map((skill, index) => (
             <li key={index} className="skill-item">
@@ -286,8 +301,42 @@ export default function ResumeForm() {
             </li>
           ))}
         </ul>
-        {/* Experience */}
-        <h3 className="form-subtitle">Projects (Max 2) </h3>
+
+        {/* ✅ Achievements */}
+        <h3 className="form-subtitle">Achievements</h3>
+        <div className="skills-input-container">
+          <input
+            type="text"
+            placeholder="Enter an achievement"
+            value={achievementInput}
+            onChange={(e) => setAchievementInput(e.target.value)}
+            className="form-input"
+          />
+          <button
+            type="button"
+            onClick={handleAddAchievement}
+            className="form-button"
+          >
+            Add Achievement
+          </button>
+        </div>
+
+        <ul className="skills-list">
+          {formData.achievements.map((item, index) => (
+            <li key={index} className="skill-item">
+              {item}
+              <button
+                onClick={() => handleRemoveAchievement(index)}
+                className="remove-skill"
+              >
+                Delete Achievement
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {/* Projects */}
+        <h3 className="form-subtitle">Projects (Max 2)</h3>
         <input
           type="text"
           name="project1"
@@ -296,7 +345,6 @@ export default function ResumeForm() {
           className="form-input"
         />
         <textarea
-          type="text"
           name="description1"
           placeholder="Project Description"
           onChange={handleChange}
@@ -310,12 +358,13 @@ export default function ResumeForm() {
           className="form-input"
         />
         <textarea
-          type="text"
           name="description2"
           placeholder="Project Description"
           onChange={handleChange}
           className="form-input"
         />
+
+        {/* Buttons */}
         <button
           className="form-button"
           onClick={() => navigate("/template", { state: { formData } })}
